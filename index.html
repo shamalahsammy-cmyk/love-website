@@ -123,7 +123,12 @@
     const r = document.getElementById("response");
 
     if (index === q.correct) {
-      r.textContent = "🥰 Correct. I knew you’d say yes.";
+      // Response text
+      if (q.isValentine) {
+        r.textContent = "Finally !! you said yes";
+      } else {
+        r.textContent = "Correct! My bby is so smart!! 🥰";
+      }
       r.style.color = "green";
       document.getElementById("nextBtn").style.display = "block";
 
@@ -134,10 +139,9 @@
       r.textContent = "😌 Wrong answer. Try again, maa.";
       r.style.color = "red";
 
-      // Shrink NO button for Valentine question
       if (q.isValentine) {
         noScale -= 0.15;
-        if (noScale < 0.3) noScale = 0.3;
+        if (noScale < 0.25) noScale = 0.25;
         btn.style.transform = `scale(${noScale})`;
       }
     }
@@ -150,7 +154,7 @@
     } else {
       document.querySelector(".card").innerHTML = `
         <h1>Happy Valentine’s Day ❤️</h1>
-        <p>You’re stuck with me now 😌</p>
+        <p>You’re stuck with me! 😌</p>
         <p>Thank you for saying yes.<br>I love you.</p>
       `;
     }
@@ -177,6 +181,9 @@
 
   loadQuestion();
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
